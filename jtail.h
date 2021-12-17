@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 ... 2020 2021
+ * Copyright (c) 2007 ... 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -17,7 +17,7 @@
 
 #ifndef JTAIL_H_REV
 
-#define JTAIL_H_REV "$Id: jtail.h,v 3.2 2020/06/18 00:40:59 jmccue Exp $"
+#define JTAIL_H_REV "INCLUDED"
 
 #define PROG_NAME      "jtail"
 #define JTAIL_MSG_SIZE 256
@@ -63,5 +63,3 @@ int  open_out(FILE *, struct s_file_info *, char *, int);
 void close_out(struct s_file_info *);
 
 #endif /* JTAIL_H_REV */
-
-/* END: jtail.h */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 ... 2020 2021
+ * Copyright (c) 2007 ... 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -15,7 +15,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef _MSDOS
 #include <sys/param.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -26,8 +28,6 @@
 #include <j_lib2m.h>
 
 #include "jtail.h"
-
-char *jtail_i_rev = "$Id: jtail_i.c,v 3.3 2021/02/21 20:57:38 jmccue Exp $";
 
 /*
  * init_finfo() -- initialize out file structure
@@ -148,5 +148,3 @@ void close_out(struct s_file_info *f)
     }
 
 } /* close_out() */
-
-/* END: jtail_i.c */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 ... 2020 2021
+ * Copyright (c) 2007 ... 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -15,7 +15,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef _MSDOS
 #include <sys/param.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -23,12 +25,6 @@
 #include <j_lib2m.h>
 
 #include "jtail.h"
-
-char *jtail_h_rev = "$Id: jtail_h.c,v 3.5 2021/02/21 20:58:18 jmccue Exp $";
-extern char *rcs_filel;
-extern char *jtail_rev;
-extern char *jtail_a_rev;
-extern char *jtail_i_rev;
 
 #define MSG_HELP_11 "Show last lines of a text file"
 
@@ -40,18 +36,8 @@ int show_rev(work_area *w)
 {
 
   fprintf(w->out.fp,"%s %s:\n", w->prog_name, LIT_REV);
-  fprintf(w->out.fp,"\t%s\n", JTAIL_H_REV);
-  fprintf(w->out.fp,"\t%s\n", jtail_rev);
-  fprintf(w->out.fp,"\t%s\n", jtail_a_rev);
-  fprintf(w->out.fp,"\t%s\n", jtail_h_rev);
-  fprintf(w->out.fp,"\t%s\n", jtail_i_rev);
-
-#ifdef J_LIB2M_H
-  fprintf(w->out.fp, "\t%s\n", J_LIB2M_H);
-#endif
 #ifdef J_LIB2_H
-  fprintf(w->out.fp, "\t%s\n", J_LIB2_H);
-  fprintf(w->out.fp, "\t     %s %s\n", LIT_INFO_02, j2_get_build());
+  fprintf(w->out.fp, "\t%s %s\n", LIT_INFO_02, j2_get_build());
 #endif
 
 #ifdef OSTYPE
@@ -93,5 +79,3 @@ int show_brief_help(work_area *w)
   return(EXIT_FAILURE);
 
 } /* show_brief_help() */
-
-/* END: jtail_h.c */

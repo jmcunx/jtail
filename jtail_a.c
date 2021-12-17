@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 ... 2020 2021
+ * Copyright (c) 2007 ... 2021 2022
  *     John McCue <jmccue@jmcunx.com>
  *
  * Permission to use, copy, modify, and distribute this software for any
@@ -15,7 +15,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef _MSDOS
 #include <sys/param.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -28,8 +30,6 @@
 #include "jtail.h"
 
 #define MAXARG 80
-
-char *jtail_a_rev = "$Id: jtail_a.c,v 3.4 2021/02/21 20:57:38 jmccue Exp $";
 
 /*
  * process_arg() -- process arguments
@@ -139,5 +139,3 @@ void process_arg(int argc, char **argv, work_area *w)
     }
 
 } /* process_arg() */
-
-/* END: jtail_a.c */
