@@ -1,0 +1,84 @@
+.\" 
+.\" Copyright (c) 2007 ... 2016 2017 2018 
+.\"     John McCue <jmccue@jmcunx.com>
+.\" 
+.\" Permission to use, copy, modify, and distribute this software for any
+.\" purpose with or without fee is hereby granted, provided that the above
+.\" copyright notice and this permission notice appear in all copies.
+.\" 
+.\" THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+.\" WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+.\" MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+.\" ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+.\" WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+.\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+.\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\" 
+.TH jtail 1 "$Date: 2018/07/05 22:48:29 $" "JMC" "Local Command"
+.SH NAME
+jtail - output the last part of 1 or more files to stdout
+.SH SYNOPSIS
+jtail [OPTIONS] [FILE...]
+.SH DESCRIPTION
+Print last 10 lines of each FILE to standard output 
+of file name(s) supplied.
+If processing more than one FILE, precede each with a header
+showing the file name.
+When no FILE specified, read standard input.
+.TP
+-c
+Prefix output with line number.
+.TP
+-e file
+Write errors/stats to file 'file'.
+Default is to to use stderr.
+.TP
+-f
+If creating an Output File (see -o below), overwrite
+file if it exists, default is to abort if output exists
+.TP
+-h
+Show brief help and exit.
+.TP
+-n NUMBER
+Print last 'NUMBER' lines instead of last 10.
+.TP
+-o file
+Write Output to file 'file' instead of stdout.
+If file exists abort unless '-f' supplied (see above).
+.TP
+-q
+Quiet, never print headers (names of files processed),
+will only attempt to print headers when processing more than 1 file.
+.TP
+-r
+Reverse, show lines in reverse order.
+Last line first.
+.TP
+-V
+output version information and exit
+.TP
+-v
+Verbose, always print file headers even when
+processing one file.
+
+.SH ENVIRONMENT
+Environment variable 'ARG_JTAIL_N' can be set to set
+the default number of lines printed (-n).
+Command line will override this variable.
+
+.SH DIAGNOSTICS
+Processes one line at a time, assumes the file is a text file.
+.PP
+If available, tail(1) may have more options.
+.SH SEE-ALSO
+dd(1),
+head(1),
+jhead(1),
+jascii(1),
+tail(1)
+.SH ERROR-CODES
+.nf
+0 success
+1 processing error
+.fi
