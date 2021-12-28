@@ -193,7 +193,7 @@ void process_a_file(work_area *w, char *fname,
 
   /*** read and save the last n lines ***/
   i = 0L;
-  while (getline(buf, bsiz, fp) > (ssize_t) -1)
+  while (j2_getline(buf, bsiz, fp) > (ssize_t) -1)
     {
       (l.last_line)++;  /* Line # of last line saved */
       if ( move_up )
