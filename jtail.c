@@ -39,6 +39,8 @@
 
 #include "jtail.h"
 
+  FILE *DEBUG_fp;
+
 /*
  * show_file_heading() -- Show run stats
  */
@@ -78,11 +80,11 @@ void show_reverse(work_area *w, f_line *l)
 	{
 	  if ( w->show_ln )
 	    {
-	      fprintf(stdout, "%ld: %s", j, l->line_data[i]); 
+	      fprintf(w->out.fp, "%ld: %s", j, l->line_data[i]); 
 	      j--;
 	    }
 	  else
-	    fprintf(stdout, "%s", l->line_data[i]); 
+	    fprintf(w->out.fp, "%s", l->line_data[i]); 
 	}
     }
 
@@ -108,11 +110,11 @@ void show_normal(work_area *w, f_line *l)
 	{
 	  if ( w->show_ln )
 	    {
-	      fprintf(stdout, "%ld: %s", j, l->line_data[i]); 
+	      fprintf(w->out.fp, "%ld: %s", j, l->line_data[i]); 
 	      j++;
 	    }
 	  else
-	    fprintf(stdout, "%s", l->line_data[i]); 
+	    fprintf(w->out.fp, "%s", l->line_data[i]); 
 	}
     }
 
@@ -231,9 +233,15 @@ void process_a_file(work_area *w, char *fname,
   /*** release memory ***/ 
   if (l.line_data != (char **) NULL) 
     { 
-      if (l.line_data[i]  != (char *) NULL) 
-	free(l.line_data[i]); 
-      free(l.line_data); 
+      for (i = 0; l.line_data[i]  != (char *) NULL; i++)
+	{
+	  if (l.line_data[i]  != (char *) NULL) 
+	    {
+	      free(l.line_data[i]); 
+	      l.line_data[i] = (char *) NULL;
+	    }
+	}
+      free(l.line_data);
     } 
 
 } /* process_a_file() */
@@ -273,10 +281,16 @@ int main(int argc, char **argv)
 
   init(&w, argc, argv);
 
+  DEBUG_fp = w.err.fp;
+
   process_all(argc, argv, &w);
 
   close_out(&(w.out));
   close_out(&(w.err));
+
+  if (w.prog_name != (char *) NULL)
+    free(w.prog_name);
+
   exit(w.err_code);
 
 }  /* main() */
