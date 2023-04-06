@@ -8,7 +8,7 @@ found in tail(1).
 If tail(1) exists on your system, you should use that instead.
 It will be much faster.
 
-This requires [j\_lib2](https://github.com/jmcunx/j_lib2) to build.
+[j\_lib2](https://github.com/jmcunx/j_lib2) is an **optional** dependency.
 
 [GNU automake](https://en.wikipedia.org/wiki/Automake)
 only confuses me, but this seems to be good enough for me.
